@@ -20,6 +20,7 @@ class App extends Component {
   }
 
   render() {
+    var ReactMarkdown = require('react-markdown');
     return (
       <div className="App">
         <h1>Mardown preview</h1>
@@ -32,9 +33,7 @@ class App extends Component {
               onChange={this.handleChange}/>
           </div>
           <div class="flex-item">
-            <p>
-              { this.state.textMarkDownValue }
-            </p>
+            <ReactMarkdown source={this.state.textMarkDownValue} />
           </div>
         </div>
       </div>

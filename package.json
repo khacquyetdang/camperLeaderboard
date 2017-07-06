@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-markdown": "^2.5.0",
+    "react-marked": "^0.3.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
