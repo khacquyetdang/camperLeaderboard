@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.sass';
+import './styles/App.scss';
 
 class App extends Component {
 
@@ -19,21 +19,38 @@ class App extends Component {
     });
   }
 
+    myrender() {
+      var ReactMarkdown = require('react-markdown');
+      return (
+        <div className="App">
+          <h1>Mardown preview</h1>
+          <div className="FlexContainer">
+            <div className="FlexItem">
+              box1
+            </div>
+            <div className="FlexItem">
+              box2
+            </div>
+          </div>
+        </div>
+      );
+    }
+
   render() {
     var ReactMarkdown = require('react-markdown');
     return (
       <div className="App">
         <h1>Mardown preview</h1>
-        <div class="flex-container">
-          <div class="flex-item">
-            <textarea className="textArea"
-              rows="20"
-              cols="40"
-              value={this.state.textOriginValue }
-              onChange={this.handleChange}/>
+        <div className="FlexContainer">
+          <div className="FlexItem">
+              <textarea className="mardownEditor"
+                rows="20"
+                cols="40"
+                value={this.state.textOriginValue }
+                onChange={this.handleChange}/>
           </div>
-          <div class="flex-item">
-            <ReactMarkdown source={this.state.textMarkDownValue} />
+          <div className="FlexItem">
+            <ReactMarkdown className="mardownResult" source={this.state.textMarkDownValue} />
           </div>
         </div>
       </div>

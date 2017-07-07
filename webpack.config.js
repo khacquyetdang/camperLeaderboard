@@ -1,52 +1,29 @@
-var webpack = require('webpack');
-var path= require('path');
+var path = require("path");
 
 module.exports = {
-  devtool: 'inline-source-map',
-  entry: [
-    'webpack-dev-server/client?http://127.0.0.1:8080',
-    'webpack/hot/only-dev-server',
-    './src'
-  ],
-  output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
-  },
-  resolve: {
-    modules: [
-      path.join(__dirname, "src"),
-      "node_modules"
-    ],
-    extensions: ['.js', '.jsx']
-  },
-  module: {
+    entry: {
+      index: [
+            'webpack-dev-server/client?http://localhost:8080',
+            './src/index.js'
+          ]
+    },
+    output: {
+      path: path.resolve(__dirname, "public"),
+      publicPath: 'public',
+      filename: '[name].js'
+    },
 
-    rules: [
-      {
-        test: /\.(js|jsx)?$/,
-        exclude: /node_modules/,
-        loader: ['react-hot-loader', 'babel-loader?presets[]=react,presets[]=stage-0,presets[]=es2015']
-      },
-      {
-        test: /\.sass$/,
-        use: [{
-          loader: "style-loader" // creates style nodes from JS strings
-        }, {
-          loader: "css-loader" // translates CSS into CommonJS
-        }, {
-          loader: "sass-loader" // compiles Sass to CSS
-        }]
-      }
-    ]
-  },
-  node: {
-    console: true,
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty'
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
-  ]
-}
+    module: {
+        loaders: [
+            {
+              test: /\.jsx?$/,
+              loader: ['react-hot-loader', 'jsx-loader', 'babel-loader'],
+              exclude: /node_modules/
+            },
+            {
+                test: /\.scss$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
+            }
+        ]
+    }
+};

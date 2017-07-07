@@ -15,3 +15,46 @@ We suggest that you begin by typing:
 
  cd markdown-preview
  yarn start
+
+sass is google library
+compile scss to css
+sass --watch ./src/styles/app.sass:./src/styles/app.css
+
+
+webpack: pack several javascript into a single minifeid and optimized script like grunt or gulp
+
+https://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-application-with-sass.html
+
+
+npm install --save-dev webpack-dev-server
+./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors
+
+webpack: bundle all the javascript in the signle java script
+babel (compiler / transpiler): ce qui permet de coder en es6 style qui est beaucoup plus sympathique
+ou d'écrire le code comme ça (EcmaScript6).
+Cause: tous les browsers interprette bien ES5 mais pas ES6. Babel prends en charge de le traduire en ES5
+donc tous les browsers soient compatible.
+
+import React from 'react';
+
+class HelloSayer extends React.Component {
+    render() {
+        return <p>Hello {this.props.name}!</p>;
+    }
+}
+
+export default HelloSayer;
+
+au lieu d'écrire le code comme ci-dessous:
+var React = require('react');
+
+var HelloSayer = React.createClass({
+    render: function() {
+        return (<p>Hello {this.props.name}!</p>);
+    }
+});
+
+module.exports = HelloSayer;
+
+webpack-dev-server --content-base public/
+webpack-dev-server --hot --progress --colors
