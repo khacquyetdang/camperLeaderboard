@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles/App.scss';
+import Prism from 'prismjs'
 
 class App extends Component {
 
@@ -11,6 +12,7 @@ class App extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.CodeBlock = this.CodeBlock.bind(this);
   }
 
   handleChange(event) {
@@ -36,6 +38,19 @@ class App extends Component {
       );
     }
 
+    CodeBlock(props) {
+      var html = Prism.highlight(props.literal, Prism.languages[props.language]);
+      var cls = 'language-' + props.language;
+
+      return (
+        <pre className={cls}>
+          <code
+            dangerouslySetInnerHTML={{__html: html}}
+            className={cls}
+          />
+        </pre>
+      )
+    }
   render() {
     var ReactMarkdown = require('react-markdown');
     return (
@@ -50,7 +65,10 @@ class App extends Component {
                 onChange={this.handleChange}/>
           </div>
           <div className="FlexItem">
-            <ReactMarkdown className="mardownResult" source={this.state.textMarkDownValue} />
+            <ReactMarkdown className="mardownResult"
+              renderers={{CodeBlock: this.CodeBlock}}
+              source={this.state.textMarkDownValue}
+              />
           </div>
         </div>
       </div>
