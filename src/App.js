@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles/App.scss';
+import './styles/App.sass';
 import Prism from 'prismjs'
 
 class App extends Component {
@@ -13,6 +13,7 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.CodeBlock = this.CodeBlock.bind(this);
+    this.getMarkdownText = this.getMarkdownText.bind(this);
   }
 
   handleChange(event) {
@@ -51,7 +52,7 @@ class App extends Component {
         </pre>
       )
     }
-  render() {
+  rendermarkdown() {
     var ReactMarkdown = require('react-markdown');
     return (
       <div className="App">
@@ -74,6 +75,41 @@ class App extends Component {
       </div>
     );
   }
+
+
+  getMarkdownText() {
+    var marked = require('marked');
+    var renderer = new marked.Renderer();
+    marked.setOptions({
+      highlight: function (code, language) {
+        return Prism.highlight(code, Prism.languages[language]);
+      }
+    });
+
+
+    var rawMarkup = marked(this.state.textMarkDownValue);
+    return { __html: rawMarkup };
+  }
+  render() {
+
+    return (
+      <div className="App">
+        <h1>Mardown preview</h1>
+        <div className="FlexContainer">
+          <div className="FlexItem">
+              <textarea className="mardownEditor"
+                value={this.state.textOriginValue }
+                onChange={this.handleChange}/>
+          </div>
+          <div className="FlexItem">
+            <div className="mardownResult"
+              dangerouslySetInnerHTML={this.getMarkdownText()}/>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
 }
 
 export default App;

@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "highlight": "^0.2.4",
+    "marked": "^0.3.6",
     "prism": "^4.1.2",
     "prismjs": "^1.6.0",
     "react": "^15.6.1",
