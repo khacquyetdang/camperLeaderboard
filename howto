@@ -58,3 +58,6 @@ module.exports = HelloSayer;
 
 webpack-dev-server --content-base public/
 webpack-dev-server --hot --progress --colors
+
+"test": "mocha --require test/.setup-tests.js --recursive src/**/__specs__/*.spec.js",
+"test": "mocha --require ignore-styles test/.setup-tests.js --recursive src/**/__specs__/*.spec.js",

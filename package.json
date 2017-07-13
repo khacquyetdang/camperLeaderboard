@@ -1,12 +1,8 @@
 {
-  "name": "markdown-preview",
+  "name": "camperLeaderboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "highlight": "^0.2.4",
-    "marked": "^0.3.6",
-    "prism": "^4.1.2",
-    "prismjs": "^1.6.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-markdown": "^2.5.0",
@@ -17,18 +13,26 @@
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chai": "^4.1.0",
     "css-loader": "^0.28.4",
+    "css-modules-require-hook": "^4.0.6",
+    "enzyme": "^2.9.1",
+    "jsdom": "^11.1.0",
     "jsx-loader": "^0.13.2",
+    "mocha": "^3.4.2",
     "node-sass": "^4.5.3",
+    "react-addons-test-utils": "^15.6.0",
     "react-hot-loader": "^1.3.1",
     "react-scripts": "1.0.10",
     "sass-loader": "^6.0.6",
+    "sinon": "^2.3.7",
     "style-loader": "^0.18.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "mocha --require ignore-styles test/.setup-tests.js --recursive src/**/__specs__/*.spec.js",
     "eject": "react-scripts eject"
   }
 }
