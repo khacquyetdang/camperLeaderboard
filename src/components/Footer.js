@@ -10,9 +10,7 @@ class Footer extends Component {
   render() {
 
     return (
-      <div className="Footer">
-        made by @danguitoezez
-      </div>
+      <div className="Footer">made by @danguito</div>
     );
   }
 

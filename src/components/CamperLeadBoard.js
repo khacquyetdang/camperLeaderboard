@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+import Header from './Header';
+import Footer from './Footer';
+import LeaderBoardTable from './LeaderBoardTable';
+
+
 class CamperLeadBoard extends Component {
 
   constructor(props) {
@@ -11,7 +16,9 @@ class CamperLeadBoard extends Component {
 
     return (
       <div className="CamperLeadBoard">
-        made by @danguitoezez
+        <Header />
+        <LeaderBoardTable></LeaderBoardTable>
+        <Footer />
       </div>
     );
   }

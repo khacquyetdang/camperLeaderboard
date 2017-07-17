@@ -11,7 +11,12 @@ class LeaderBoardRow extends Component {
 
     return (
       <div className="LeaderBoardRow">
-        made by @danguitoezez
+        <div className="recentScore">{this.props.data.recent}</div>
+        <div className="allTimeScore">{this.props.data.alltime}</div>
+        <div>
+          <img className="userProfile" src={this.props.data.img} />
+          <div className="userName">{this.props.data.username}</div>
+        </div>
       </div>
     );
   }
