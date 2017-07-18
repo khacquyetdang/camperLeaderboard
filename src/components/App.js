@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CamperLeadBoard from './components/CamperLeadBoard.js';
+import CamperLeadBoard from './CamperLeadBoard.js';
 import './styles/App.sass';
 
 class App extends Component {

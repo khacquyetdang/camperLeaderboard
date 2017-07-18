@@ -19,7 +19,7 @@ describe("Component : LeaderBoardRow ", function() {
       data : camperJson
     };
     //wrapper = shallow(<LeaderBoardRow {...props}/>);
-    wrapper = shallow(<LeaderBoardRow data={camperJson}/>);
+    wrapper = shallow(<LeaderBoardRow userScore={camperJson}/>);
     //wrapper.setProps(props);
   });
 
@@ -29,7 +29,7 @@ describe("Component : LeaderBoardRow ", function() {
 
   it("it should renders with data ", function() {
 
-    expect(wrapper.instance().props.data).to.equal(camperJson);
+    expect(wrapper.instance().props.userScore).to.equal(camperJson);
     expect(wrapper.containsMatchingElement( <img src={camperJson.img}/>)).to.equal(true);
     expect(wrapper.containsMatchingElement( <div>{camperJson.username}</div>)).to.equal(true);
     expect(wrapper.find('.recentScore')).to.have.length(1);

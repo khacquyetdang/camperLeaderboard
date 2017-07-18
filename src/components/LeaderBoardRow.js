@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './styles/LeaderBoardRow.sass';
+
 
 class LeaderBoardRow extends Component {
 
@@ -8,16 +10,24 @@ class LeaderBoardRow extends Component {
 
 
   render() {
-
+    const key = this.props.id + 1;
     return (
-      <div className="LeaderBoardRow">
-        <div className="recentScore">{this.props.data.recent}</div>
-        <div className="allTimeScore">{this.props.data.alltime}</div>
-        <div>
-          <img className="userProfile" src={this.props.data.img} />
-          <div className="userName">{this.props.data.username}</div>
-        </div>
-      </div>
+      <tr className={ key % 2 == 1 ? "LeaderBoardRow" : "LeaderBoardRowGray" }>
+        <td className="tableColumn">
+          {key}
+        </td>
+        <td className="tableColumn">
+          <div className="profile">
+            <img className="profileImg" src={this.props.userScore.img} />
+            <a href={"https://www.freecodecamp.com/" + this.props.userScore.username}
+              target="_blank"
+              className="profileName">{this.props.userScore.username}</a>
+          </div>
+        </td>
+
+        <td className="tableColumn">{this.props.userScore.recent}</td>
+        <td className="tableColumn">{this.props.userScore.alltime}</td>
+      </tr>
     );
   }
 
