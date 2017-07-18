@@ -27,7 +27,7 @@ class CamperLeadBoard extends Component {
   {
     fetch(`https://fcctop100.herokuapp.com/api/fccusers/top/alltime`)
     .then(result=>result.json())
-    .then(items=>this.setState({camperScore : items})):
+    .then(items=>this.setState({camperScore : items}));
   }
 
   render() {

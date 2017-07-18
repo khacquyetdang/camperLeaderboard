@@ -31,11 +31,11 @@ describe("Component : LeaderBoardRow ", function() {
 
     expect(wrapper.instance().props.userScore).to.equal(camperJson);
     expect(wrapper.containsMatchingElement( <img src={camperJson.img}/>)).to.equal(true);
-    expect(wrapper.containsMatchingElement( <div>{camperJson.username}</div>)).to.equal(true);
-    expect(wrapper.find('.recentScore')).to.have.length(1);
-    expect(wrapper.containsMatchingElement( <div>{camperJson.recent}</div>)).to.equal(true);
-    expect(wrapper.find('.allTimeScore')).to.have.length(1);
-    expect(wrapper.containsMatchingElement( <div>{camperJson.alltime}</div>)).to.equal(true);
+    const link = "https://www.freecodecamp.com/" + camperJson.username;
+    expect(wrapper.containsMatchingElement( <a href={link} target="_blank" className="profileName">{camperJson.username}</a>
+)).to.equal(true);
+    expect(wrapper.containsMatchingElement( <td>{camperJson.recent}</td>)).to.equal(true);
+    expect(wrapper.containsMatchingElement( <td>{camperJson.alltime}</td>)).to.equal(true);
 
   });
 

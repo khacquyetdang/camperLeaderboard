@@ -1,5 +1,5 @@
 require('babel-register')();
-
+require('isomorphic-fetch');
 var jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
