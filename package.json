@@ -32,7 +32,7 @@
     "style-loader": "^0.18.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "webpack-dev-server --content-base public/",
     "build": "react-scripts build",
     "test": "mocha --require ignore-styles test/.setup-tests.js --recursive src/**/__specs__/*.spec.js",
     "eject": "react-scripts eject"
