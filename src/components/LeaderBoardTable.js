@@ -10,7 +10,8 @@ class LeaderBoardTable extends Component {
     console.log("constructor ");
     console.log(this.props)
     this.state = {
-      usersScore : this.props.usersScore
+      usersScore : this.props.usersScore,
+      sortedByAllTime: true
     };
   }
 
@@ -23,6 +24,7 @@ class LeaderBoardTable extends Component {
 
   sortByLastThirdyDay()
   {
+    this.setState({sortedByAllTime : false});
     var usersScoreArr = this.state.usersScore;
     usersScoreArr.sort(function(user1, user2) {
       return user2.recent - user1.recent;
@@ -34,12 +36,14 @@ class LeaderBoardTable extends Component {
 
   sortByAllTime()
   {
+    this.setState({sortedByAllTime : true});
     var usersScoreArr = this.state.usersScore;
     usersScoreArr.sort(function(user1, user2) {
       return user2.alltime - user1.alltime;
     });
     this.setState ({
-      usersScore : usersScoreArr
+      usersScore : usersScoreArr,
+      sortedByAllTime: true
     });
   }
 
@@ -59,6 +63,9 @@ class LeaderBoardTable extends Component {
   }
   render() {
 
+    const sortedByAllTime = this.state.sortedByAllTime;
+    //var sortedByAllTime = true;
+
     return (
       <div className="LeaderBoardContainer">
         <div className="LeaderBoardHeader">LeaderBoard</div>
@@ -67,8 +74,14 @@ class LeaderBoardTable extends Component {
             <tr className="headerTableRow">
               <th className="headerTableColumn"># </th>
               <th className="headerTableColumn">Camper Name </th>
-              <th className="headerTableColumn"><div onClick={(e) => this.sortByLastThirdyDay()}>Points in past 30 days</div> </th>
-              <th className="headerTableColumn"><div onClick={(e) => this.sortByAllTime()}>All time points </div></th>
+              <th className="headerTableColumn">
+                <div className={sortedByAllTime ? "recentPointColumn" : "recentPointColumnSelected"} onClick={(e) => this.sortByLastThirdyDay()}>Points in past 30 days
+                {sortedByAllTime ? <div></div> : <div className="sortedIcon"></div>}
+              </div> </th>
+              <th className="headerTableColumn">
+                <div className={sortedByAllTime ? "recentPointColumnSelected" : "recentPointColumn"} onClick={(e) => this.sortByAllTime()}>All time points
+                  {sortedByAllTime ? <div className="sortedIcon"></div> : <div></div> }
+                </div></th>
             </tr>
             { this.renderTableContent()}
           </tbody>
