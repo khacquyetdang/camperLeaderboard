@@ -7,8 +7,6 @@ class LeaderBoardTable extends Component {
 
   constructor(props) {
     super(props);
-    console.log("constructor ");
-    console.log(this.props)
     this.state = {
       usersScore : this.props.usersScore,
       sortedByAllTime: true
@@ -49,10 +47,7 @@ class LeaderBoardTable extends Component {
 
   renderTableContent()
   {
-    console.log("renderTableContent");
-    console.log(this.props);
     const usersScoreArr = this.state.usersScore;
-    console.log(usersScoreArr);
     if (usersScoreArr != null)
     {
       const rowsTable = usersScoreArr.map((userScore, index) => <LeaderBoardRow key={index} id={index} userScore={userScore} />);
