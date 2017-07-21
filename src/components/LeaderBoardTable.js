@@ -71,11 +71,11 @@ class LeaderBoardTable extends Component {
               <th className="headerTableColumn">Camper Name </th>
               <th className="headerTableColumn">
                 <div className={sortedByAllTime ? "recentPointColumn" : "recentPointColumnSelected"} onClick={(e) => this.sortByLastThirdyDay()}>Points in past 30 days
-                {sortedByAllTime ? <div></div> : <div className="sortedIcon"></div>}
+                {sortedByAllTime ? <div></div> : <span className="caret"></span>}
               </div> </th>
               <th className="headerTableColumn">
                 <div className={sortedByAllTime ? "recentPointColumnSelected" : "recentPointColumn"} onClick={(e) => this.sortByAllTime()}>All time points
-                  {sortedByAllTime ? <div className="sortedIcon"></div> : <div></div> }
+                  {sortedByAllTime ? <span className="caret"></span> : <div></div> }
                 </div></th>
             </tr>
             { this.renderTableContent()}
